@@ -25,6 +25,21 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Erlaube $(PRODUCT_NAME) deinen Standort zu nutzen"
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Erlaube $(PRODUCT_NAME) auf deine Fotos zuzugreifen",
+          "cameraPermission": "Erlaube $(PRODUCT_NAME) auf deine Kamera zuzugreifen"
+        }
+      ]
+    ]
   }
 }

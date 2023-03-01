@@ -3,8 +3,8 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 export type UserData = {
   DataProcessingAccepted: boolean;
   BalconyImage: {
-    id?: string;
-    data?: string;
+    id?: string | null;
+    data?: string | null;
     uri: string;
   };
   Balcony: {
@@ -14,7 +14,7 @@ export type UserData = {
   UserLocation: {
     lat: number;
     long: number;
-    altitude?: number;
+    altitude?: number | null;
   };
   UserConsumption: {
     amount: number;
@@ -26,6 +26,8 @@ export type UserData = {
 export type NavigationParamList = {
   Start: undefined;
   Privacy: undefined;
+  BalconyImage: undefined;
+  Location: undefined;
 };
 
 export type NavProps = NativeStackScreenProps<NavigationParamList>;

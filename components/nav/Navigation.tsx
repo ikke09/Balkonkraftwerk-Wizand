@@ -10,6 +10,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationParamList } from '../../types/types';
 import StartScreen from '../../screens/StartScreen';
 import PrivacyScreen from '../../screens/PrivacyScreen';
+import BalconyImageScreen from '../../screens/BalconyImageScreen';
+import LocationScreen from '../../screens/LocationScreen';
 
 export default function Navigation() {
   const Stack = createNativeStackNavigator<NavigationParamList>();
@@ -22,6 +24,16 @@ export default function Navigation() {
           name="Privacy"
           component={PrivacyScreen}
           options={{ title: 'Datenverarbeitung' }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="BalconyImage"
+          component={BalconyImageScreen}
+          options={{ title: 'Foto' }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="Location"
+          component={LocationScreen}
+          options={{ title: 'Standort' }}
         ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
