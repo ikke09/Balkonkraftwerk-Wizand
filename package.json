@@ -2,20 +2,11 @@
   "name": "balkonkraftwerk-wizard",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
-  "engines": {
-    "node": ">=18",
-    "pnpm": ">=3"
-  },
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web",
-    "lint": "eslint --ext .js,.cjs,.ts,.tsx .",
-    "format": "prettier --plugin-search-dir . --check .",
-    "lint:fix": "eslint --ext .js,.cjs,.ts,.tsx . --fix",
-    "format:fix": "prettier --plugin-search-dir . --write ."
+    "web": "expo start --web"
   },
   "dependencies": {
     "expo": "~47.0.12",
