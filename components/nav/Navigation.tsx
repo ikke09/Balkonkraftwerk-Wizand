@@ -9,6 +9,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { NavigationParamList } from '../../types/types';
 import StartScreen from '../../screens/StartScreen';
+import PrivacyScreen from '../../screens/PrivacyScreen';
 
 export default function Navigation() {
   const Stack = createNativeStackNavigator<NavigationParamList>();
@@ -16,12 +17,11 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="Start" component={StartScreen}></Stack.Screen>
         <Stack.Screen
-          name="Start"
-          component={StartScreen}
-          options={{
-            headerShown: true,
-          }}
+          name="Privacy"
+          component={PrivacyScreen}
+          options={{ title: 'Datenverarbeitung' }}
         ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
