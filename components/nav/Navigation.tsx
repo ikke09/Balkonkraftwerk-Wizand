@@ -10,9 +10,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationParamList } from '../../types/types';
 import StartScreen from '../../screens/StartScreen';
 import PrivacyScreen from '../../screens/PrivacyScreen';
-import BalconyImageScreen from '../../screens/BalconyImageScreen';
+import BalconyScreen from '../../screens/BalconyScreen';
 import LocationScreen from '../../screens/LocationScreen';
 import { useTheme } from 'native-base';
+import BalconyPreviewScreen from '../../screens/BalconyPreviewScreen';
+import BalconyOutlineScreen from '../../screens/BalconyOutlineScreen';
+import UsageScreen from '../../screens/UsageScreen';
+import ResultScreen from '../../screens/ResultScreen';
+import CameraScreen from '../../screens/CameraScreen';
 
 export default function Navigation() {
   const Stack = createNativeStackNavigator<NavigationParamList>();
@@ -39,14 +44,39 @@ export default function Navigation() {
           options={{ title: 'Datenverarbeitung' }}
         ></Stack.Screen>
         <Stack.Screen
-          name="BalconyImage"
-          component={BalconyImageScreen}
+          name="Balcony"
+          component={BalconyScreen}
           options={{ title: 'Foto' }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="Camera"
+          component={CameraScreen}
+          options={{ title: 'Kamera' }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="BalconyPreview"
+          component={BalconyPreviewScreen}
+          options={{ title: 'Preview' }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="BalconyOutline"
+          component={BalconyOutlineScreen}
+          options={{ title: 'Umriss' }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="Usage"
+          component={UsageScreen}
+          options={{ title: 'Verbrauch' }}
         ></Stack.Screen>
         <Stack.Screen
           name="Location"
           component={LocationScreen}
           options={{ title: 'Standort' }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="Result"
+          component={ResultScreen}
+          options={{ title: 'Ergebniss' }}
         ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

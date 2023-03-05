@@ -1,4 +1,4 @@
-import { Box, Checkbox } from 'native-base';
+import { Box, Checkbox, Button } from 'native-base';
 import React from 'react';
 import { useUserStateValue } from '../components/UserContext';
 import { NavProps } from '../types/types';
@@ -17,6 +17,12 @@ export default function PrivacyScreen({ navigation }: NavProps) {
       >
         Datenverarbeitung Akzeptieren!
       </Checkbox>
+      <Button
+        onPress={() => navigation.navigate('Balcony')}
+        isDisabled={!userContext.DataProcessingAccepted}
+      >
+        Start
+      </Button>
     </Box>
   );
 }

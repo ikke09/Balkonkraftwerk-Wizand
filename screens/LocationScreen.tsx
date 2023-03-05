@@ -1,5 +1,5 @@
-import { Box, Button, Image, Text } from 'native-base';
-import React, { useState, useEffect } from 'react';
+import { Box, Button, Text } from 'native-base';
+import React, { useState } from 'react';
 import { useUserStateValue } from '../components/UserContext';
 import { NavProps } from '../types/types';
 import * as Location from 'expo-location';
@@ -29,6 +29,7 @@ export default function LocationScreen({ navigation }: NavProps) {
   return (
     <Box alignItems="center">
       <Button onPress={getUserLocation}>Locate Me!</Button>
+      <Button onPress={() => navigation.navigate('Usage')}>Weiter</Button>
       {errorMsg && <Text color="red">{errorMsg}</Text>}
     </Box>
   );

@@ -18,7 +18,10 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Diese App nutzt die Kamera um die Größe des Balkons zu bestimmen."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -37,6 +40,13 @@
         "expo-image-picker",
         {
           "photosPermission": "Erlaube $(PRODUCT_NAME) auf deine Fotos zuzugreifen",
+          "//": "Disables the microphone permission",
+          "microphonePermission": false
+        }
+      ],
+      [
+        "expo-camera",
+        {
           "cameraPermission": "Erlaube $(PRODUCT_NAME) auf deine Kamera zuzugreifen"
         }
       ]

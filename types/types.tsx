@@ -26,7 +26,12 @@ export type UserData = {
 export type NavigationParamList = {
   Start: undefined;
   Privacy: undefined;
-  BalconyImage: undefined;
+  Usage: undefined;
+  Result: undefined;
+  Camera: undefined;
+  Balcony: undefined;
+  BalconyPreview: undefined;
+  BalconyOutline: undefined;
   Location: undefined;
 };
 
