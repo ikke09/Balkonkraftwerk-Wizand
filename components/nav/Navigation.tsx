@@ -4,7 +4,7 @@
  *
  */
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { NavigationParamList } from '../../types/types';
@@ -12,12 +12,25 @@ import StartScreen from '../../screens/StartScreen';
 import PrivacyScreen from '../../screens/PrivacyScreen';
 import BalconyImageScreen from '../../screens/BalconyImageScreen';
 import LocationScreen from '../../screens/LocationScreen';
+import { useTheme } from 'native-base';
 
 export default function Navigation() {
   const Stack = createNativeStackNavigator<NavigationParamList>();
+  const { colors } = useTheme();
+  const navTheme = {
+    ...DefaultTheme,
+    dark: false,
+    colors: {
+      ...DefaultTheme.colors,
+      primary: colors.white,
+      background: colors.primary[400],
+      card: colors.primary[600],
+      text: colors.secondary[400],
+    },
+  };
 
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={navTheme}>
       <Stack.Navigator>
         <Stack.Screen name="Start" component={StartScreen}></Stack.Screen>
         <Stack.Screen
