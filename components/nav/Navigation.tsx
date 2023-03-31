@@ -4,20 +4,17 @@
  *
  */
 import React from 'react';
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { useTheme } from 'native-base';
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import WizardNavigation from './WizardNavigation';
 import { NavigationParamList } from '../../types/types';
 import StartScreen from '../../screens/StartScreen';
-import PrivacyScreen from '../../screens/PrivacyScreen';
-import BalconyScreen from '../../screens/BalconyScreen';
-import LocationScreen from '../../screens/LocationScreen';
-import { useTheme } from 'native-base';
-import BalconyPreviewScreen from '../../screens/BalconyPreviewScreen';
-import BalconyOutlineScreen from '../../screens/BalconyOutlineScreen';
-import UsageScreen from '../../screens/UsageScreen';
-import ResultScreen from '../../screens/ResultScreen';
-import CameraScreen from '../../screens/CameraScreen';
+import InformationScreen from '../../screens/InformationScreen';
+import ProviderScreen from '../../screens/ProviderScreen';
+import ChecklistScreen from '../../screens/ChecklistScreen';
+import ARScreen from '../../screens/ARScreen';
 
 export default function Navigation() {
   const Stack = createNativeStackNavigator<NavigationParamList>();
@@ -36,47 +33,25 @@ export default function Navigation() {
 
   return (
     <NavigationContainer theme={navTheme}>
-      <Stack.Navigator>
-        <Stack.Screen name="Start" component={StartScreen}></Stack.Screen>
+      <Stack.Navigator
+        initialRouteName="Start"
+        screenOptions={{
+          headerBackTitle: 'Zurück',
+        }}
+      >
         <Stack.Screen
-          name="Privacy"
-          component={PrivacyScreen}
-          options={{ title: 'Datenverarbeitung' }}
+          name="Start"
+          component={StartScreen}
+          options={{ title: 'Balkonkraftwerk-Wizard' }}
         ></Stack.Screen>
+        <Stack.Screen name="Information" component={InformationScreen}></Stack.Screen>
+        <Stack.Screen name="Provider" component={ProviderScreen}></Stack.Screen>
+        <Stack.Screen name="Checklist" component={ChecklistScreen}></Stack.Screen>
+        <Stack.Screen name="AR" component={ARScreen}></Stack.Screen>
         <Stack.Screen
-          name="Balcony"
-          component={BalconyScreen}
-          options={{ title: 'Foto' }}
-        ></Stack.Screen>
-        <Stack.Screen
-          name="Camera"
-          component={CameraScreen}
-          options={{ title: 'Kamera' }}
-        ></Stack.Screen>
-        <Stack.Screen
-          name="BalconyPreview"
-          component={BalconyPreviewScreen}
-          options={{ title: 'Preview' }}
-        ></Stack.Screen>
-        <Stack.Screen
-          name="BalconyOutline"
-          component={BalconyOutlineScreen}
-          options={{ title: 'Umriss' }}
-        ></Stack.Screen>
-        <Stack.Screen
-          name="Usage"
-          component={UsageScreen}
-          options={{ title: 'Verbrauch' }}
-        ></Stack.Screen>
-        <Stack.Screen
-          name="Location"
-          component={LocationScreen}
-          options={{ title: 'Standort' }}
-        ></Stack.Screen>
-        <Stack.Screen
-          name="Result"
-          component={ResultScreen}
-          options={{ title: 'Ergebniss' }}
+          name="Wizard"
+          component={WizardNavigation}
+          options={{ headerShown: false }}
         ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

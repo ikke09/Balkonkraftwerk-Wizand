@@ -1,8 +1,8 @@
 import { Box, Text, Button } from 'native-base';
 import React from 'react';
-import { NavProps } from '../types/types';
+import { WizardStackScreenProps } from '../../types/types';
 
-export default function ResultScreen({ navigation }: NavProps) {
+export default function ResultScreen({ navigation }: WizardStackScreenProps<'Result'>) {
   return (
     <Box>
       <Text>Result</Text>

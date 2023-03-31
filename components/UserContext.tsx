@@ -4,23 +4,26 @@ import { UserData } from '../types/types';
 const initialUserContext: UserData = {
   DataProcessingAccepted: false,
   BalconyImage: {
-    id: undefined,
-    data: undefined,
-    uri: '',
+    id: null,
+    base64: '',
+    uri: null,
   },
   Balcony: {
     area: 0,
     alignment: 'South',
+    shadowing: 'None',
+    angle: '90',
   },
   UserLocation: {
     lat: 0,
-    long: 0,
+    lng: 0,
     altitude: undefined,
   },
   UserConsumption: {
     amount: 0,
     price: 0,
   },
+  TimePeriod: 1,
   setUserData: () => {},
 };
 

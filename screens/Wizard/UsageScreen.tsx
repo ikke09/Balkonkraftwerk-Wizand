@@ -1,8 +1,8 @@
 import { Box, Text, Button } from 'native-base';
 import React from 'react';
-import { NavProps } from '../types/types';
+import { WizardStackScreenProps } from '../../types/types';
 
-export default function UsageScreen({ navigation }: NavProps) {
+export default function UsageScreen({ navigation }: WizardStackScreenProps<'Usage'>) {
   return (
     <Box>
       <Text>BalconyOutline</Text>
