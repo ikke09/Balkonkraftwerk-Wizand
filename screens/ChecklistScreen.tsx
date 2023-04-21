@@ -14,7 +14,6 @@ export default function ChecklistScreen({ navigation }: NavigationStackScreenPro
       try {
         const res = await fetch(`${config.ApiUrl}/api/checklist`);
         const data: Checklist = await res.json();
-        console.log(data);
         setChecklist(data);
       } catch (error) {
         console.error(`Loading from ${url} failed`, error);
