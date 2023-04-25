@@ -5,64 +5,61 @@ import { useUserStateValue } from '../../components/UserContext';
 import WizardContainer from '../../components/WizardContainer';
 import { Platform } from 'react-native';
 
-export default function UsageScreen({ navigation }: WizardStackScreenProps<'Usage'>) {
+export default function InvestmentScreen({ navigation }: WizardStackScreenProps<'Investment'>) {
   const userContext = useUserStateValue();
   return (
     <WizardContainer
-      title="Stromverbrauch"
-      continueTo="Investment"
-      continueCondition={!!userContext.Consumption.amount && !!userContext.Consumption.price}
-      index={6}
+      title="Preis"
+      continueTo="Result"
+      continueCondition={!!userContext.TimePeriod && !!userContext.PV.investment}
+      index={7}
       navigation={navigation}
     >
       <FormControl minWidth="80%">
         <FormControl.Label>
-          <Text>Wie hoch ist Ihr jährlicher Stromverbrauch?</Text>
+          <Text>Mit welchem Preis rechnen Sie für das Balkonkraftwerk?</Text>
         </FormControl.Label>
         <InputGroup>
           <Input
             w="80%"
             size="lg"
             color="secondary.400"
-            placeholder="2500"
-            value={`${userContext.Consumption.amount || 0}`}
+            placeholder="1000"
+            value={`${userContext.PV.investment || 0}`}
             onChangeText={(text) => {
               userContext.setUserData({
-                Consumption: {
-                  ...userContext.Consumption,
-                  amount: parseInt(text),
+                PV: {
+                  ...userContext.PV,
+                  investment: parseInt(text),
                 },
               });
             }}
             keyboardType="number-pad"
             returnKeyType={Platform.OS === 'ios' ? 'done' : 'next'}
           />
-          <InputRightAddon w="20%" children={'kWh'} />
+          <InputRightAddon w="20%" children={'€'} />
         </InputGroup>
       </FormControl>
       <FormControl minWidth="80%">
         <FormControl.Label>
-          <Text>Wie viel Kostet eine kWh in Cent?</Text>
+          <Text>Mit welchen Nutzungszeitraum rechnen Sie?</Text>
         </FormControl.Label>
         <InputGroup>
           <Input
             w="80%"
             size="lg"
             color="secondary.400"
-            placeholder="40"
-            value={`${userContext.Consumption.price || 0}`}
+            placeholder="15"
+            value={`${userContext.TimePeriod || 0}`}
             onChangeText={(text) => {
               userContext.setUserData({
-                Consumption: {
-                  ...userContext.Consumption,
-                  price: parseInt(text),
-                },
+                TimePeriod: parseInt(text),
               });
             }}
             keyboardType="number-pad"
             returnKeyType={Platform.OS === 'ios' ? 'done' : 'next'}
           />
-          <InputRightAddon w="20%" children={'ct'} />
+          <InputRightAddon w="20%" children={'Jahre'} />
         </InputGroup>
       </FormControl>
     </WizardContainer>

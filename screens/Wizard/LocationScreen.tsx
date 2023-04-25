@@ -1,12 +1,13 @@
-import { Box, Button, Text } from 'native-base';
+import { Button, Text, HStack } from 'native-base';
 import React, { useState } from 'react';
 import { useUserStateValue } from '../../components/UserContext';
 import { WizardStackScreenProps } from '../../types/types';
 import * as Location from 'expo-location';
+import { FontAwesome } from '@expo/vector-icons';
+import WizardContainer from '../../components/WizardContainer';
 
 export default function LocationScreen({ navigation }: WizardStackScreenProps<'Location'>) {
   const userContext = useUserStateValue();
-
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const getUserLocation = async () => {
@@ -16,30 +17,40 @@ export default function LocationScreen({ navigation }: WizardStackScreenProps<'L
       return;
     }
 
-    let location = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Low });
+    let location = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
     userContext.setUserData({
-      UserLocation: {
-        lat: location.coords.latitude,
-        lng: location.coords.longitude,
+      Location: {
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
         altitude: location.coords.altitude,
       },
     });
   };
 
   return (
-    <Box alignItems="center">
-      <Button onPress={getUserLocation}>Lokalisieren</Button>
-      <Button
-        isDisabled={!userContext.UserLocation.lat || !userContext.UserLocation.lng}
-        onPress={() => navigation.navigate('Usage')}
-      >
-        Weiter
-      </Button>
+    <WizardContainer
+      title="Wohnort"
+      continueTo="Module"
+      continueCondition={!!userContext.Location.latitude && !!userContext.Location.longitude}
+      index={3}
+      navigation={navigation}
+    >
       <Text>
-        Aktuelle Position: {userContext.UserLocation.lat || ''} |{' '}
-        {userContext.UserLocation.lng || ''}
+        Durch klicken auf "Lokalisieren" wird Ihr Standort ermittelt, um eine Berechnung mit Ihren
+        Gegebenheiten zu ermöglichen.
       </Text>
+      <Button
+        w="60%"
+        size="lg"
+        onPress={getUserLocation}
+        endIcon={<FontAwesome name="location-arrow" size={24} color="white" />}
+      >
+        Lokalisieren
+      </Button>
+      <Text fontWeight="bold">Aktuelle Position:</Text>
+      <Text>Latitude: {userContext.Location.latitude}</Text>
+      <Text>Longitude: {userContext.Location.longitude}</Text>
       {errorMsg && <Text color="red">{errorMsg}</Text>}
-    </Box>
+    </WizardContainer>
   );
 }
