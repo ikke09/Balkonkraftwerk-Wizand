@@ -1,32 +1,6 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
 
-export type UserData = {
-  DataProcessingAccepted: boolean;
-  BalconyImage: {
-    id: string | null;
-    base64: string;
-    uri: string | null;
-  };
-  Balcony: {
-    area: number;
-    alignment: 'South' | 'North' | 'East' | 'West';
-    shadowing: 'None' | 'Low' | 'Medium' | 'High';
-    angle: '90' | '45' | '20' | '0';
-  };
-  UserLocation: {
-    lat: number;
-    lng: number;
-    altitude?: number | null;
-  };
-  UserConsumption: {
-    amount: number;
-    price: number;
-  };
-  TimePeriod: number;
-  setUserData: (data: Partial<UserData>) => void;
-};
-
 export type NavigationParamList = {
   Start: undefined;
   Information: undefined;
@@ -43,6 +17,7 @@ export type WizardParamList = {
   Module: undefined;
   Balcony: undefined;
   Usage: undefined;
+  Investment: undefined;
   Result: undefined;
 };
 
