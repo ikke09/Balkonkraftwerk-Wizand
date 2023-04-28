@@ -14,7 +14,7 @@ export default function ProviderScreen({ navigation }: NavigationStackScreenProp
     (async () => {
       setIsLoading(true);
       let url = `${config.ApiUrl}/api/mastr`;
-      if (query) url += `?q=${query}`;
+      if (query) url += `?city=${query}`;
       try {
         const res = await fetch(url);
         const data: MastrList = await res.json();
@@ -31,17 +31,16 @@ export default function ProviderScreen({ navigation }: NavigationStackScreenProp
     <VStack w="100%" h="100%" p={4} space={8} justifyContent="space-around" alignItems="center">
       <FormControl>
         <FormControl.Label>
-          <Text>Postleitzahl</Text>
+          <Text>Stadt</Text>
         </FormControl.Label>
         <Input
           size="lg"
           color="secondary.400"
-          placeholder="Nach ihrer Postleitzahl suchen..."
+          placeholder="Nach einer Stadt suchen..."
           value={query || ''}
           onChangeText={(text: string) => {
             setQuery(text);
           }}
-          keyboardType="number-pad"
           returnKeyType={Platform.OS === 'ios' ? 'done' : 'next'}
         />
       </FormControl>

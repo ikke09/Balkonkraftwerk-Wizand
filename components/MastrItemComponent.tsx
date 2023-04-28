@@ -18,6 +18,7 @@ const MastrItemComponent = ({ item }: { item: MastrItem }) => {
       borderColor="secondary.400"
       p={4}
       mb={2}
+      shadow={2}
     >
       <VStack space={0.5} flex={1}>
         <Heading>{item.name}</Heading>
