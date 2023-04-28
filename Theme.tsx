@@ -49,6 +49,11 @@ const Theme = extendTheme({
         bg: 'tertiary.400',
       },
     },
+    Heading: {
+      defaultProps: {
+        color: 'secondary.400',
+      },
+    },
     Text: {
       defaultProps: {
         color: 'secondary.400',

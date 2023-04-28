@@ -12,7 +12,7 @@ export default function ChecklistScreen({ navigation }: NavigationStackScreenPro
     (async () => {
       const url = `${config.ApiUrl}/api/checklist`;
       try {
-        const res = await fetch(`${config.ApiUrl}/api/checklist`);
+        const res = await fetch(url);
         const data: Checklist = await res.json();
         setChecklist(data);
       } catch (error) {
