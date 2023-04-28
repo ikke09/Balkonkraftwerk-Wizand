@@ -25,7 +25,7 @@ export default function StartScreen({ navigation }: NavigationStackScreenProps<'
         </Button>
         <Button onPress={() => navigation.navigate('AR')}>Balkonkraftwerk in AR</Button>
         <Button onPress={() => navigation.navigate('Checklist')}>Checkliste VRZ</Button>
-        <Button onPress={() => navigation.navigate('Provider')}>Stromanbieter</Button>
+        <Button onPress={() => navigation.navigate('Provider')}>Netzbetreiber</Button>
       </VStack>
     </Box>
   );
