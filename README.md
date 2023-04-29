@@ -13,3 +13,19 @@ The app is build with react-native and Expo. So if you want to try it yourself, 
 3. Install dependencies `npm ci`
 
 You can start the app locally with `npm start`.
+
+## Credits Logo
+
+Made with [Namecheap](namecheap.com)
+
+font name: unb-office_regular
+font link: [http://www.marca.unb.br/fontesunb.php](http://www.marca.unb.br/fontesunb.php)
+font author: Universidade de Brasilia
+font author site: [http://www.marca.unb.br/introducao.php](http://www.marca.unb.br/introducao.php)
+
+icon designer: Alfredo @ IconsAlfredo.us
+icon designer link: /AlfredoCreates
+
+fontColor: {"hex":"#FFF"}
+bgColor: {"hex":"#687EB1"}
+iconColor: {"hex":"#FFF"}
