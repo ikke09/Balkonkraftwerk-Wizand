@@ -4,7 +4,7 @@
  *
  */
 import React from 'react';
-import { useTheme } from 'native-base';
+import { IconButton, useTheme } from 'native-base';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -15,6 +15,7 @@ import InformationScreen from '../../screens/InformationScreen';
 import ProviderScreen from '../../screens/ProviderScreen';
 import ChecklistScreen from '../../screens/ChecklistScreen';
 import ARScreen from '../../screens/ARScreen';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function Navigation() {
   const Stack = createNativeStackNavigator<NavigationParamList>();
@@ -44,10 +45,40 @@ export default function Navigation() {
           component={StartScreen}
           options={{ title: 'Balkonkraftwerk-Wizard' }}
         ></Stack.Screen>
-        <Stack.Screen name="Information" component={InformationScreen}></Stack.Screen>
-        <Stack.Screen name="Provider" component={ProviderScreen}></Stack.Screen>
-        <Stack.Screen name="Checklist" component={ChecklistScreen}></Stack.Screen>
-        <Stack.Screen name="AR" component={ARScreen}></Stack.Screen>
+        <Stack.Screen
+          name="Information"
+          component={InformationScreen}
+          options={{
+            title: 'FAQ',
+            headerRight: () => (
+              <IconButton icon={<Ionicons name="information-circle" size={24} color="white" />} />
+            ),
+          }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="Provider"
+          component={ProviderScreen}
+          options={{
+            title: 'Stromnetzbetreiber',
+          }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="Checklist"
+          component={ChecklistScreen}
+          options={{
+            title: 'Checkliste',
+            headerRight: () => (
+              <IconButton icon={<Ionicons name="information-circle" size={24} color="white" />} />
+            ),
+          }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="AR"
+          component={ARScreen}
+          options={{
+            title: 'Augmented Reality',
+          }}
+        ></Stack.Screen>
         <Stack.Screen
           name="Wizard"
           component={WizardNavigation}

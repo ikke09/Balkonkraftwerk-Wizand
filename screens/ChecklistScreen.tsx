@@ -1,12 +1,20 @@
-import { Box, Text, Checkbox, HStack, VStack, Spinner } from 'native-base';
+import { Box, Text, Checkbox, HStack, VStack, Spinner, IconButton } from 'native-base';
 import React, { useEffect, useState } from 'react';
 import { NavigationStackScreenProps } from '../types/types';
 import config from '../lib/config';
 import { Checklist } from '../types/checklist';
+import * as WebBrowser from 'expo-web-browser';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function ChecklistScreen({ navigation }: NavigationStackScreenProps<'Checklist'>) {
   const [checklist, setChecklist] = useState<Checklist | null>(null);
   const [checked, setChecked] = useState(0);
+
+  const openMoreInformation = async () => {
+    await WebBrowser.openBrowserAsync(
+      'https://www.verbraucherzentrale.nrw/wissen/energie/erneuerbare-energien/steckersolar-solarstrom-vom-balkon-direkt-in-die-steckdose-44715'
+    );
+  };
 
   useEffect(() => {
     (async () => {
@@ -20,6 +28,17 @@ export default function ChecklistScreen({ navigation }: NavigationStackScreenPro
       }
     })();
   }, []);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <IconButton
+          icon={<Ionicons name="information-circle" size={24} color="white" />}
+          onPress={() => openMoreInformation()}
+        />
+      ),
+    });
+  }, [navigation]);
 
   return (
     <Box alignItems="center" w="100%">

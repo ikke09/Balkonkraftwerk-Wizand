@@ -1,14 +1,22 @@
-import { Box, Divider, FlatList, Spinner } from 'native-base';
+import { Box, Divider, FlatList, IconButton, Spinner } from 'native-base';
 import React, { useEffect, useState } from 'react';
 import { NavigationStackScreenProps } from '../types/types';
 import config from '../lib/config';
 import { QAList } from '../types/qalist';
 import QAItemComponent from '../components/QAItemComponent';
+import * as WebBrowser from 'expo-web-browser';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function InformationScreen({
   navigation,
 }: NavigationStackScreenProps<'Information'>) {
   const [qalist, setQAList] = useState<QAList | null>(null);
+
+  const openMoreInformation = async () => {
+    await WebBrowser.openBrowserAsync(
+      'https://www.verbraucherzentrale.nrw/wissen/energie/erneuerbare-energien/steckersolar-solarstrom-vom-balkon-direkt-in-die-steckdose-44715'
+    );
+  };
 
   useEffect(() => {
     (async () => {
@@ -22,6 +30,18 @@ export default function InformationScreen({
       }
     })();
   }, []);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <IconButton
+          icon={<Ionicons name="information-circle" size={24} color="white" />}
+          onPress={() => openMoreInformation()}
+        />
+      ),
+    });
+  }, [navigation]);
+
   return (
     <Box alignItems="center" w="100%">
       {!qalist && <Spinner accessibilityLabel="QA laden..." size="lg" />}
