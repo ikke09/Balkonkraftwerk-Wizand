@@ -11,8 +11,23 @@ The app is build with react-native and Expo. So if you want to try it yourself, 
 1. Clone repo
 2. Change directory to repo
 3. Install dependencies `npm ci`
+4. Copy/Rename the .env.example to a .env file (This file represents some settings of the app)
 
 You can start the app locally with `npm start`.
+
+## Running the App on your device
+
+The app uses the [Expo](https://expo.dev/) framework in order to have a good and easy developer experience.
+To enable all features of the app, you also have to setup the API at [Balkonkraftwerk-Wizard-Backend](https://github.com/ikke09/Balkonkraftwerk-Wizard-Backend/).
+In order to run the App on your local device, do the following:
+
+1. Setup this project
+2. Checkout and setup the backend code at [Balkonkraftwerk-Wizard-Backend](https://github.com/ikke09/Balkonkraftwerk-Wizard-Backend/)
+3. Start the API
+4. Install the [Expo Go](https://expo.dev/expo-go) app on your device
+5. Start the Expo Go App on your device
+6. Start with `npm start`
+7. Scan the QR-Code with the Expo Go app that is shown when running `npm start`
 
 ## Credits Logo
 
