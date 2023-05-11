@@ -72,8 +72,8 @@ export default function BalconyScreen({ navigation }: WizardStackScreenProps<'Ba
           }
         >
           <Select.Item label="unter 20%" value="None" />
-          <Select.Item label="20% - 50%" value="Low" />
-          <Select.Item label="50% - 80%" value="Medium" />
+          <Select.Item label="20% - 60%" value="Low" />
+          <Select.Item label="60% - 80%" value="Medium" />
           <Select.Item label="über 80%" value="High" />
         </Select>
       </FormControl>
